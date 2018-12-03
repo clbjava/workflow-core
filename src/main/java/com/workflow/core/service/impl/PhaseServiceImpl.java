@@ -1,15 +1,15 @@
-package com.workflow.core.services.impl;
+package com.workflow.core.service.impl;
 
 
 import com.workflow.core.context.Context;
-import com.workflow.core.services.PhaseService;
-import com.workflow.core.services.spi.PhaseHandleService;
+import com.workflow.core.service.PhaseService;
+import com.workflow.core.service.spi.PhaseHandleService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 
-@Service("com.workflow.core.services.impl.PhaseServiceImpl")
+@Service("com.workflow.core.service.impl.PhaseServiceImpl")
 public class PhaseServiceImpl implements PhaseService<Context,Context> {
 
     ApplicationContext applicationContext;

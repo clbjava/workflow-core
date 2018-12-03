@@ -1,11 +1,10 @@
-package com.workflow.core.services.spi.support;
+package com.workflow.core.service.spi.support;
 
 import com.workflow.core.context.Context;
-import com.workflow.core.services.spi.PhaseHandleService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 
-public class DefualtPhaseHandleSupport implements PhaseHandleService<Context, Context> {
+public class DefualtPhaseHandleServiceImpl extends AbstractPhaseHandle {
 
     ApplicationContext applicationContext;
 

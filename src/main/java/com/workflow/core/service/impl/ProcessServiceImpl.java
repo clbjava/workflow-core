@@ -1,8 +1,8 @@
-package com.workflow.core.services.impl;
+package com.workflow.core.service.impl;
 
 import com.workflow.core.context.Context;
 import com.workflow.core.entity.ApplyProcessInfo;
-import com.workflow.core.services.ProcessService;
+import com.workflow.core.service.ProcessService;
 
 public class ProcessServiceImpl implements ProcessService {
 

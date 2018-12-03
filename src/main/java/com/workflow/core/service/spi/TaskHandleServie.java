@@ -1,4 +1,4 @@
-package com.workflow.core.services.spi;
+package com.workflow.core.service.spi;
 
 public interface TaskHandleServie<E,T> {
 

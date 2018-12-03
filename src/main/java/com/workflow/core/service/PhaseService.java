@@ -1,4 +1,4 @@
-package com.workflow.core.services;
+package com.workflow.core.service;
 
 
 import org.springframework.context.ApplicationContextAware;

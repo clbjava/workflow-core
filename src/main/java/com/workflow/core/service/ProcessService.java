@@ -1,4 +1,4 @@
-package com.workflow.core.services;
+package com.workflow.core.service;
 
 import com.workflow.core.context.Context;
 import com.workflow.core.entity.ApplyProcessInfo;
