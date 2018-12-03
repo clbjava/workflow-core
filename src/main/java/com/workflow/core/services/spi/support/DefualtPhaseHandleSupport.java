@@ -1,11 +1,11 @@
 package com.workflow.core.services.spi.support;
 
 import com.workflow.core.context.Context;
-import com.workflow.core.services.spi.PhaseSpiService;
+import com.workflow.core.services.spi.PhaseHandleService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 
-public class DefualtPhaseSupport implements PhaseSpiService<Context, Context> {
+public class DefualtPhaseHandleSupport implements PhaseHandleService<Context, Context> {
 
     ApplicationContext applicationContext;
 
@@ -23,7 +23,7 @@ public class DefualtPhaseSupport implements PhaseSpiService<Context, Context> {
 
     @Override
     public void after(Context context) throws Exception {
-        //执行任务 TaskSpiServie.run()
+        //执行任务 TaskHandleServie.run()
 
     }
 

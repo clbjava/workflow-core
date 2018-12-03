@@ -1,6 +1,6 @@
 package com.workflow.core.services.spi;
 
-public interface TaskSpiServie<E,T> {
+public interface TaskHandleServie<E,T> {
 
     /**
      * 任务执行

@@ -3,7 +3,7 @@ package com.workflow.core.services.spi;
 
 import org.springframework.context.ApplicationContextAware;
 
-public interface  PhaseSpiService<E, T>  extends ApplicationContextAware {
+public interface PhaseHandleService<E, T>  extends ApplicationContextAware {
 
     /**
      * 流程阶段前处理
