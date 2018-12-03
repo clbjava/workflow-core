@@ -6,6 +6,7 @@ import com.workflow.core.service.spi.PhaseHandleService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 
+
 abstract class AbstractPhaseHandle implements PhaseHandleService<Context, Context> {
 
     ApplicationContext applicationContext;
