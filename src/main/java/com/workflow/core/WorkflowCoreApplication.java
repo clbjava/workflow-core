@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WorkflowCoreApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(WorkflowCoreApplication.class, args);
 	}
+
+
 }
