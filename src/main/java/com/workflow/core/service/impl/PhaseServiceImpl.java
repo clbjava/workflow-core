@@ -17,7 +17,7 @@ public class PhaseServiceImpl implements PhaseService<Context,Context> {
     @Override
     public Context execute(final Context context) throws Exception {
         Context result;
-        String serviceId = (String) context.get("serviceId");
+        String serviceId = context.getServiceId();
         PhaseHandleService phaseHandleService = applicationContext.getBean(serviceId, PhaseHandleService.class);
         phaseHandleService.before(context);
         result = (Context) phaseHandleService.execute(context);
