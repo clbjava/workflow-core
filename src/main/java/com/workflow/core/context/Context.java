@@ -1,8 +1,7 @@
 package com.workflow.core.context;
 
-import java.util.concurrent.ConcurrentHashMap;
 
-public class Context extends ConcurrentHashMap<String,Object> {
+public class Context<T> {
 
     /**
      * Trading number
@@ -12,17 +11,29 @@ public class Context extends ConcurrentHashMap<String,Object> {
     /**
      * Trading straregy，not empty
      */
-    private  String  serviceId;
+    private String serviceId;
 
     /**
      * Trading code
      */
-    private  String code;
+    private String code;
 
     /**
      * Trading msg
      */
     private String msg;
+
+    private T content;
+
+    public Context() {
+    }
+
+    public Context(String transNo, String serviceId, String code, String msg) {
+        this.transNo = transNo;
+        this.serviceId = serviceId;
+        this.code = code;
+        this.msg = msg;
+    }
 
     public String getTransNo() {
         return transNo;
@@ -54,6 +65,14 @@ public class Context extends ConcurrentHashMap<String,Object> {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public T getContent() {
+        return content;
+    }
+
+    public void setContent(T content) {
+        this.content = content;
     }
 }
 
