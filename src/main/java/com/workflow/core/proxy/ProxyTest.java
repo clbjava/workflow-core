@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Title: workflow-core
@@ -19,13 +21,14 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyTest {
 
-    private static final Logger LOG= LoggerFactory.getLogger(ProxyTest.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(ProxyTest.class);
 
     public static void main(String[] args) {
 
         try {
             //加上这句将会产生一个$Proxy0.class文件，这个文件即为动态生成的代理类文件
-            System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles","true");
+            /*System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
 
             Class<?> proxyClass = Proxy.getProxyClass(ProxyTest.class.getClassLoader(),
                     ProcessService.class);
@@ -33,19 +36,27 @@ public class ProxyTest {
             final InvocationHandler invocationHandler = new DefualtInvocationHandler(new ProcessServiceImpl());
             cons.setAccessible(true);
             ProcessService processService = (ProcessService) cons.newInstance(invocationHandler);
-            Context context=new Context();
+            Context context = new Context();
             context.setCode("0000");
 
-            LOG.info("{}",processService.queryWorlFlow(context));
+            Map<String, Object> map = new HashMap<String, Object>(16);
 
-           /* ProcessService processService=(ProcessService)Proxy.
+            LOG.info("{}", processService.queryWorlFlow(context));
+
+           ProcessService processService1=(ProcessService)Proxy.
                     newProxyInstance(ProxyTest.class.getClassLoader(),
                             new Class<?>[]{ProcessService.class},
                             new DefualtInvocationHandler(new ProcessServiceImpl()));
-           processService.queryWorlFlow(null);*/
+           processService1.queryWorlFlow(null);*/
+
+
+            DefualtInvocationHandler handler = new DefualtInvocationHandler(
+                    new ProcessServiceImpl(), new Class<?>[]{ProcessService.class});
+            ProcessService processService= (ProcessService) handler.getProxy();
+            processService.queryWorlFlow(null);
 
         } catch (Throwable e) {
-            LOG.info("e----：{}",e);
+            LOG.info("e----：{}", e);
         }
     }
 }

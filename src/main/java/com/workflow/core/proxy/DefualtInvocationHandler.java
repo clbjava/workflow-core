@@ -1,11 +1,13 @@
 package com.workflow.core.proxy;
 
 import com.workflow.core.service.ProcessService;
+import com.workflow.core.service.impl.ProcessServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date: 2018-12-05 10:44
  * @version: V1.0
  */
-public class DefualtInvocationHandler implements InvocationHandler {
+public class DefualtInvocationHandler implements DefualtProxy, InvocationHandler {
 
     private final Logger LOGGER= LoggerFactory.getLogger(DefualtInvocationHandler.class);
 
@@ -25,10 +27,13 @@ public class DefualtInvocationHandler implements InvocationHandler {
 
     private Object target;
 
-    public DefualtInvocationHandler(Object target) {
+    private Class<?>[] proxiedInterfaces;
+
+    public DefualtInvocationHandler(Object target,Class<?>[] proxiedInterfaces ) {
         LOGGER.info(">>>>>>init:{}",target.getClass().getName());
         cache.put(target.getClass().getName(),target);
         this.target = target;
+        this.proxiedInterfaces=proxiedInterfaces;
     }
 
     @Override
@@ -51,4 +56,13 @@ public class DefualtInvocationHandler implements InvocationHandler {
         LOGGER.info(">>>>>>after:");
         return object;
     }
+
+    @Override
+    public Object getProxy() {
+        return Proxy.newProxyInstance(this.getClass().getClassLoader(),
+                proxiedInterfaces,
+                this);
+    }
+
+
 }
